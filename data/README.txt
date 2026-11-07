@@ -1,0 +1,1 @@
+Runtime PDF uploads are stored here. Do not store private student documents in a public repository.

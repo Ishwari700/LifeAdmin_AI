@@ -1,0 +1,9 @@
+from .models import Scheme
+SEEDS=[
+dict(name="MahaDBT — Post Matric Scholarship (illustrative)",description="Possible post-matric assistance routes for eligible Maharashtra students. Exact department, category, income and course rules vary.",category="Post-matric",max_income=250000,eligible_categories="SC,ST,OBC,VJNT,SBC",eligible_courses="Engineering,Arts,Science,Commerce,Diploma",documents="Aadhaar; domicile certificate; income certificate; caste certificate where applicable; previous marksheet; admission receipt; fee receipt; bank passbook; bonafide certificate",steps="Confirm the exact department scheme and current notification. Check category, income, course and institute conditions. Prepare valid documents. Register on the official portal. Complete the application and upload documents. Review and submit. Track institute and department verification.",source_name="MahaDBT official portal",source_url="https://mahadbt.maharashtra.gov.in/"),
+dict(name="MahaDBT — Tuition Fee / Examination Fee assistance (illustrative)",description="Some fee-assistance schemes support eligible students in approved courses and institutions; exact rules vary.",category="Fee assistance",max_income=800000,eligible_categories="Open,OBC,VJNT,SBC,EWS",eligible_courses="Engineering,Professional courses,Diploma",documents="Aadhaar; domicile; income certificate; admission/CAP document where applicable; fee receipt; marksheet; bank details",steps="Identify the exact department scheme. Verify institution and course approval. Check income/category conditions. Collect documents. Apply on the official portal. Track verification and respond to objections.",source_name="MahaDBT official portal",source_url="https://mahadbt.maharashtra.gov.in/")
+]
+def seed(db):
+    if db.query(Scheme).count()==0:
+        for x in SEEDS: db.add(Scheme(**x,verified_at="Seed record — verify current notice",is_demo=True))
+        db.commit()
